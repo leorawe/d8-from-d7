@@ -18,8 +18,9 @@ Sample for settings.php (check lando info for actual settings):
   'driver' => 'mysql',  
 );
 
+```
 And this is where I named db2 in .lando.yml:
-
+```yml
 name: njmig  
 recipe: drupal8  
 config:  
@@ -30,3 +31,4 @@ services:
   db2:  
     type: mysql  
     portforward: 3308  
+```
