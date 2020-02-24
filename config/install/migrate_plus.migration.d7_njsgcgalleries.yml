@@ -1,12 +1,12 @@
-id: d7_njsgcpages
-label: Basic Page Content
+id: d7_njsgcgalleries
+label: Galleries
 migration_group: njgroup
 migration_tags:
   - Drupal 7
 source:
   plugin: d7_node
   key: db2
-  node_type: 'page'
+  node_type: 'node_gallery_gallery'
 process:
   langcode:
     plugin: default_value
@@ -26,14 +26,6 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_image:
-    source: field_descriptive_image
-    process:
-      target_id:
-        plugin: migration_lookup
-        migration: d7_njsgcimages
-        source: fid
-      alt: alt
   body:
     plugin: sub_process
     source: body
@@ -45,7 +37,7 @@ process:
 
 destination:
   plugin: entity:node
-  default_bundle: basic_page
+  default_bundle: gallery
 
 # migration_dependencies:
 #   required:
