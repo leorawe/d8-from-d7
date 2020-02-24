@@ -1,0 +1,38 @@
+id: d7_njsgcimages
+label: Image Files
+migration_group: njgroup
+migration_tags:
+  - Drupal 7
+source:
+  plugin: d7_file
+  constants:
+    source_base_path: "sites/default/files/"
+    old_files_path: "sites/default/files/drupal7/"
+process:
+  filename: filename
+  source_full_path:
+    - plugin: concat
+      source:
+        - constants/old_files_path
+        - filepath
+    - plugin: urlencode
+  uri:
+    - plugin: file_copy
+      source:
+        - "@source_full_path"
+        - uri
+  filemime: filemime
+  # filesize is dynamically computed when file entities are saved, so there is
+  # no point in migrating it.
+  # filesize: filesize
+  status: status
+  created: timestamp
+  changed: timestamp
+  fid: fid
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+destination:
+  plugin: entity:file

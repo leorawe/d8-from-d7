@@ -47,13 +47,20 @@ process:
  ‘body/value’: body_value
 
  ‘body/summary’: body_summary
+#  body/value:
+#   -
+#     plugin: str_replace
+#     source: article_text
+#     search: /assets/images/
+#     replace: 'https://www.example.com/assets/images/'
+#   -
+#     plugin: inline_images
+#     base: 'public://inline-images'
 
 destination:
   plugin: entity:node
   bundle: basic_page
 
 # migration_dependencies:
-
 #  required:
-
-#    – d7_images
+#    – d7_njsgcpagefiles
